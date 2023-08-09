@@ -1,14 +1,14 @@
 package com.insider.utilities;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 
+import java.io.File;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -117,6 +117,24 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
 
+    }
+
+    public static void takeScreenshot(WebDriver driver, ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()) {
+            try {
+                // Ekran görüntüsü al
+                TakesScreenshot screenshot = (TakesScreenshot) driver;
+                File source = screenshot.getScreenshotAs(OutputType.FILE);
+
+                // Ekran görüntüsünü kaydet
+                String fileName = result.getName() + "_" + System.currentTimeMillis() + ".png";
+                File target = new File("screenshots/" + fileName);
+                FileUtils.copyFile(source, target);
+                System.out.println("Screenshot saved to: " + target.getAbsolutePath());
+            } catch (Exception e) {
+                System.out.println("Failed to take screenshot: " + e.getMessage());
+            }
+        }
     }
 
 

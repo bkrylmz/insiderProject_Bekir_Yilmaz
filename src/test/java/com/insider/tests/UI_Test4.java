@@ -5,9 +5,13 @@ import com.insider.utilities.BrowserUtils;
 import com.insider.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import static org.testng.AssertJUnit.assertTrue;
+
 
 public class UI_Test4 extends UseInsiderPage {
     private WebDriver driver;
@@ -17,12 +21,18 @@ public class UI_Test4 extends UseInsiderPage {
         Driver.getDriver().get("https://useinsider.com/careers/quality-assurance/");
     }
 
-
-    @Test //Test failed. There is a bug. Software QA Tester Insider Testinium TechHub_RemotePosition is not contain "Quality Assurance", it just contains "QA"
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        BrowserUtils.takeScreenshot(Driver.getDriver(), result);
+    }
 
     //Test Automation
     // 4. Check that all jobs’ Position contains “Quality Assurance”, Department contains “Quality Assurance”,
     // and Location contains “Istanbul, Turkey”
+
+    //Test failed. Because There is a bug. Software QA Tester Insider Testinium TechHub_RemotePosition
+    // is not contain "Quality Assurance", it just contains "QA"
+    @Test
     public void test4() {
 
         onlyNecessaryCookies.click();

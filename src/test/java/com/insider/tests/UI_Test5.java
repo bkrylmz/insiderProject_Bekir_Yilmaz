@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -19,10 +21,16 @@ public class UI_Test5 extends UseInsiderPage {
         Driver.getDriver().get("https://useinsider.com/careers/quality-assurance/");
     }
 
-    @Test  //Test failed. There is a bug. When user click the view role, it does not redirect App Form
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        BrowserUtils.takeScreenshot(Driver.getDriver(), result);
+    }
+
     //Test Automation
     //5. Click the “View Role” button and check that this action redirects us to the Lever Application form page
 
+    //Test failed. Because There is a bug. When user click the view role, it does not redirect App Form
+    @Test
     public void test5() {
 
         onlyNecessaryCookies.click();
