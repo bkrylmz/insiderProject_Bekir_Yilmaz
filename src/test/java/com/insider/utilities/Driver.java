@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
     private  Driver(){
-
 }
 
     private static WebDriver driver;
@@ -17,10 +16,7 @@ public class Driver {
     public static WebDriver getDriver(){
 
         if(driver==null){
-            /*
-            We read our browserType from configuration.properties
-            This way we can control which browser is opened from outside code, from configuration.properties
-            */
+
             String browserType = ConfigurationReader.getProperty("browser");
 
             switch (browserType){
@@ -39,17 +35,13 @@ public class Driver {
             }
 
         }
-
         return driver;
 
     }
 
-    /*
-    This method will make sure our driver value is always null after using quit() method
-    */
     public static void closeDriver(){
         if (driver != null){
-            driver.quit();  //this line will terminate the existing session. value will not be null
+            driver.quit();
             driver = null;
         }
     }
