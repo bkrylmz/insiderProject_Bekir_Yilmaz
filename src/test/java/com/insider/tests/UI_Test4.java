@@ -2,6 +2,7 @@ package com.insider.tests;
 
 import com.insider.pages.UseInsiderPage;
 import com.insider.utilities.BrowserUtils;
+import com.insider.utilities.ConfigurationReader;
 import com.insider.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -18,7 +19,8 @@ public class UI_Test4 extends UseInsiderPage {
 
     @BeforeMethod
     public void setupMethod() {
-        Driver.getDriver().get("https://useinsider.com/careers/quality-assurance/");
+        Driver.getDriver().get(ConfigurationReader.getProperty("qapage"));
+
     }
 
     @AfterMethod
@@ -26,12 +28,13 @@ public class UI_Test4 extends UseInsiderPage {
         BrowserUtils.takeScreenshot(Driver.getDriver(), result);
     }
 
-    //Test Automation
+    // Test Automation
     // 4. Check that all jobs’ Position contains “Quality Assurance”, Department contains “Quality Assurance”,
     // and Location contains “Istanbul, Turkey”
 
-    //Test failed. Because There is a bug. Software QA Tester Insider Testinium TechHub_RemotePosition
+    // Test failed. Because There is a bug. Software QA Tester Insider Testinium TechHub_RemotePosition
     // is not contain "Quality Assurance", it just contains "QA"
+    // At the bottom of the console, you can find the location where the screenshot is saved. "Screenshot saved to: ..."
     @Test
     public void test4() {
 

@@ -2,9 +2,8 @@ package com.insider.tests;
 
 import com.insider.pages.UseInsiderPage;
 import com.insider.utilities.BrowserUtils;
+import com.insider.utilities.ConfigurationReader;
 import com.insider.utilities.Driver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -18,7 +17,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class UI_Test5 extends UseInsiderPage {
     @BeforeMethod
     public void setupMethod() {
-        Driver.getDriver().get("https://useinsider.com/careers/quality-assurance/");
+        Driver.getDriver().get(ConfigurationReader.getProperty("qapage"));
     }
 
     @AfterMethod
@@ -26,10 +25,12 @@ public class UI_Test5 extends UseInsiderPage {
         BrowserUtils.takeScreenshot(Driver.getDriver(), result);
     }
 
-    //Test Automation
-    //5. Click the “View Role” button and check that this action redirects us to the Lever Application form page
+    // Test Automation
+    // 5. Click the “View Role” button and check that this action redirects us to the Lever Application form page
 
-    //Test failed. Because There is a bug. When user click the view role, it does not redirect App Form
+    // Test failed. Because There is a bug. When user click the view role, it does not redirect App Form.
+    // at first user clicks “View Role”  and than user needs to click "APPLY FOR THIS JOB" button to redirect App form page
+    // At the bottom of the console, you can find the location where the screenshot is saved. "Screenshot saved to: ..."
     @Test
     public void test5() {
 
@@ -50,7 +51,6 @@ public class UI_Test5 extends UseInsiderPage {
         actions.moveToElement(seniorSoftwareQualityAssuranceEngineer_RemotePosition).pause(2500).perform();
         viewRole1.click();
 
-        WebElement applicationForm = Driver.getDriver().findElement(By.xpath("//input[@name='resume']")); // Test failed. There is a bug
         Assert.assertTrue(applicationForm.isDisplayed());
     }
 

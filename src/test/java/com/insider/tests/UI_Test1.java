@@ -22,8 +22,8 @@ public class UI_Test1 extends UseInsiderPage {
         BrowserUtils.takeScreenshot(Driver.getDriver(), result);
     }
 
-    //Test Automation
-    //1. Visit https://useinsider.com/ and check Insider home page is opened or not
+    // Test Automation
+    // 1. Visit https://useinsider.com/ and check Insider home page is opened or not
     @Test
     public void test1() {
         String expectedTitle = "#1 Leader in Individualized, Cross-Channel CX — Insider";

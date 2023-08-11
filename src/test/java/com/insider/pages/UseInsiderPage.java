@@ -1,5 +1,7 @@
 package com.insider.pages;
 
+import com.insider.utilities.BrowserUtils;
+import com.insider.utilities.ConfigurationReader;
 import com.insider.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,10 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.insider.utilities.Driver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.rmi.Remote;
 
 public class UseInsiderPage {
+
     public UseInsiderPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -18,10 +24,8 @@ public class UseInsiderPage {
     @FindBy(xpath = "(//a[@id='navbarDropdownMenuLink'])[4]")
     public WebElement mainPageCompanyButton;
 
-
     @FindBy(xpath = "//a[@href='https://useinsider.com/careers/']")
     public WebElement mainPageCareersButton;
-
 
     @FindBy(xpath = "//a[@id='wt-cli-accept-btn']")
     public WebElement onlyNecessaryCookies;
@@ -37,10 +41,6 @@ public class UseInsiderPage {
 
     @FindBy(xpath = "//h2[.='Life at Insider']")
     public WebElement lifeAtInsider;
-
-
-
-
 
     @FindBy(xpath = "//a[.='See all QA jobs']")
     public WebElement seeAllQaJobs;
@@ -83,7 +83,7 @@ public class UseInsiderPage {
     public WebElement viewRole1;
 
     @FindBy(xpath ="//input[@name='resume']")
-    public WebElement aplicationForm;
+    public WebElement applicationForm;
 
 
 

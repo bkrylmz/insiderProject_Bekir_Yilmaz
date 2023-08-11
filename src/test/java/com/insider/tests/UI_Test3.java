@@ -2,6 +2,7 @@ package com.insider.tests;
 
 import com.insider.pages.UseInsiderPage;
 import com.insider.utilities.BrowserUtils;
+import com.insider.utilities.ConfigurationReader;
 import com.insider.utilities.Driver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.ITestResult;
@@ -14,8 +15,8 @@ import static org.testng.AssertJUnit.assertTrue;
 public class UI_Test3 extends UseInsiderPage {
     @BeforeMethod
     public void setupMethod() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("qapage"));
 
-        Driver.getDriver().get("https://useinsider.com/careers/quality-assurance/");
     }
 
     @AfterMethod
@@ -23,8 +24,8 @@ public class UI_Test3 extends UseInsiderPage {
         BrowserUtils.takeScreenshot(Driver.getDriver(), result);
     }
 
-    //Test Automation
-    //3. Go to https://useinsider.com/careers/quality-assurance/, click “See all QA jobs”, filter jobs by Location:
+    // Test Automation
+    // 3. Go to https://useinsider.com/careers/quality-assurance/, click “See all QA jobs”, filter jobs by Location:
     // “Istanbul, Turkey”, and Department: “Quality Assurance”, check the presence of the job list
     @Test
     public void test3() {

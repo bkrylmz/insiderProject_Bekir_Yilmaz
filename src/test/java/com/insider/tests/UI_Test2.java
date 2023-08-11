@@ -23,11 +23,13 @@ public class UI_Test2 extends UseInsiderPage {
         BrowserUtils.takeScreenshot(Driver.getDriver(), result);
     }
 
-    //Test Automation
-    //2. Select the “Company” menu in the navigation bar, select “Careers” and check Career page,
+    // Test Automation
+    // 2. Select the “Company” menu in the navigation bar, select “Careers” and check Career page,
     // its Locations, Teams, and Life at Insider blocks are open or not
 
-    //Test failed. Because There is a bug. Teams are not open all. For ex. to open QA team, user should click see all team button
+    // Test failed. Because There is a bug. Teams are not open all.
+    // For ex. to open QA team, user should click "see all team" button after open the career page
+    // At the bottom of the console, you can find the location where the screenshot is saved. "Screenshot saved to: ..."
     @Test
     public void test2() {
 
